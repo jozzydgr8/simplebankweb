@@ -1,0 +1,176 @@
+:root{
+  --main-background:#FAFAFA;
+  --div-background:#FFFFFF;
+  --text-color:black;
+}
+.dark-theme{
+  --main-background:black;
+  --div-background: rgb(31, 31, 31);
+  --text-color:white;
+  
+}
+.one, .two, .dfirst,  nav, .customMenu{
+  background: var(--div-background);
+  color: var(--text-color);
+}
+.customMenu .ant-menu-item {
+  color: var(--text-color);
+}
+/* root classes */
+body{
+  background: var(--main-background);
+  color:var(--text-color);
+}
+
+.nav-link{
+  color: var(--text-color);
+}
+
+nav .container-fluid{
+  padding:0% 5%;
+}
+section .container-fluid{
+  padding:5% 5%;
+}
+a{
+  text-decoration: none;
+  color:var(--text-color)
+}
+
+/* layoutgrid */
+.displaygrid {
+  display: grid;
+  margin: 0 auto;
+  grid-gap: 0px;
+  height: 100vh;
+  grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+  grid-auto-rows: minmax(10px, auto);
+   /* Auto rows with a minimum height of 100px */
+  
+  /* Define grid areas across rows */
+  grid-template-areas: 
+    "one second second second"
+    "one three three three"
+    "one three three three "
+    "one three three three "
+    "one three three three "
+    "one three three three "
+    "one three three three"
+    ;
+/* Empty cells represented by . */
+}
+@media (max-width:800px) {
+  .displaygrid{
+    grid-template-areas:
+    "second second second second"
+    "three three three three"
+    "three three three three "
+    "three three three three "
+    "three three three three "
+    "three three three three "
+    "three three three three" ;
+  }
+  .one {
+    display: none;
+  }
+}
+
+
+
+.one {
+  grid-area: one;
+}
+
+.second{
+  grid-area: second;
+}
+
+.three {
+  grid-area: three;
+  overflow-y: auto;
+}
+
+/* dashboard dashbpard */
+.dfirst{
+  height: 100px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px;
+  margin: 5px 0;
+  border-radius: 10px;
+  
+}
+
+
+.dsecond{
+  margin-top: 40px;
+  height: 300px;
+  border-radius: 20px;
+}
+
+/* charts */
+.chartDiv{
+  padding: 10px;
+  background: var(--div-background);
+  height:350px;
+  border-radius: 20px;
+}
+
+.customInput .ant-input-search-button .ant-input-search-icon {
+  background: transparent;
+  border: solid var(--text-color) 1px;
+  color: var(--text-color);
+  outline: none;
+  fill: var(--text-color); /* Change the fill color of the icon */
+}
+
+/* session user  */
+.sessioncontainer{
+  position: absolute;
+  right: 0;
+  left:0;
+  top:0;
+  bottom:0;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+}
+
+/* loading loader */
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 3px solid #FFF;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after {
+  content: '';  
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid;
+  border-color: #198754 transparent;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
