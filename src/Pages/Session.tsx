@@ -6,7 +6,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../App";
 import { UseAuthContext } from "../Context/UseAuthContext";
 import { useState } from "react";
-import { Input } from "antd";
+import { Input, message } from "antd";
 
 
 type formikType = {
@@ -54,13 +54,21 @@ export default function Session(){
     const navigate = useNavigate();
     const {dispatch} = UseAuthContext();
     const [error, setError] = useState(false);
-    const handleSignIn = async(values:formikType)=>{
-    
+    const handleSignIn = async(values:formikType, actions:{ resetForm: () => void })=>{
+        dispatch({type:'loading', payload:true});
+        
         try{
             const usercredential = await signInWithEmailAndPassword(auth, values.email, values.password  );
-            dispatch({type:'getUser', payload :usercredential.user})
+            dispatch({type:'getUser', payload :usercredential.user});
+            dispatch({type:'loading', payload:false});
+            actions.resetForm()
         }catch(error){
             console.error(error);
+            
+            dispatch({type:'loading', payload:false});
+            alert("email or password wrong");
+            
+        }finally{
             setError(true);
         }
     }
@@ -71,8 +79,8 @@ export default function Session(){
         validationSchema={validationSchema}
         initialValues={{email:'',password:""}}
         onSubmit={(values:formikType, actions)=>{
-            handleSignIn(values);
-            actions.resetForm()
+            handleSignIn(values, actions);
+           
         }}>
             {
                 (props)=>(

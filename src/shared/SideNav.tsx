@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { MenuItem } from '../Types/Types';
 import { signOut } from 'firebase/auth';
 import { auth } from '../App';
+import { UseAuthContext } from '../Context/UseAuthContext';
 
 
 export const SideNav: React.FC = () => {
@@ -17,6 +18,7 @@ export const SideNav: React.FC = () => {
     
   ];
   const navigate = useNavigate();
+  const{dispatch}=UseAuthContext();
 
   // Map the items array to the format required by the Menu component
   const menuItems = items.map(item => ({
@@ -26,10 +28,13 @@ export const SideNav: React.FC = () => {
   }));
 
   const handleSignOut = async()=>{
+    dispatch({type:'loading', payload:true});
     try{
-      await signOut(auth)
+      await signOut(auth);
+      dispatch({type:'loading', payload:false});
     }catch(error){
-      console.error(error)
+      console.error(error);
+      dispatch({type:'loading', payload:false});
     }
   }
 
@@ -39,6 +44,7 @@ export const SideNav: React.FC = () => {
     onClick={({key})=>{
       if(key == 'signOut'){
         handleSignOut();
+        return
       }
       navigate(key);
     }}

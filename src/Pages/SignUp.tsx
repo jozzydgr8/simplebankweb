@@ -46,20 +46,25 @@ const styles = {
     
 }
 export default function SignUp(){
-    const [error, setError] = useState(false);
+
     const navigate = useNavigate();
     const {dispatch} = UseAuthContext();
+
     const handleSignUp = async ({name, email, password}:formikType)=>{
+        dispatch({type:'loading', payload:true});
         try{
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const {user} = userCredential
             await updateProfile(user, {displayName:name});
+            
 
             console.log('welcome new user');
             dispatch({type:'getUser', payload:user});
+            dispatch({type:'loading', payload:false});
         }catch(error){
             console.error(error);
-            setError(true);
+            alert("email already exists");
+            dispatch({type:'loading', payload:false});
         }
     }
     return(
@@ -77,7 +82,7 @@ export default function SignUp(){
                      <div style={styles.container}>
                      <h1>Sign Up</h1>
                     
-                    <div style={styles.error}>{error && 'Error Account already exist'}</div>
+                    {/* <div style={styles.error}>{error && 'Error Account already exist'}</div> */}
                     <input
                     style={styles.input} 
                     placeholder="Email: e.g. myemail@mail.com"

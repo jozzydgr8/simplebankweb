@@ -60,6 +60,8 @@ Simple Bank Website is a frontend project focused on creating a clean and profes
 
 - 🌙 **Dark Mode** – Provide a theme switcher for better user experience.
 
+-  **password reset and account deletion** – Provide and send reset emails and delete accounts.
+
 ## License
 This project is open-source and available under the [MIT License](LICENSE).
 

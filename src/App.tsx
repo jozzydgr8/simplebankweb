@@ -40,7 +40,6 @@ function App() {
     dispatch({type:'loading', payload:true});
     const unSubscribe = onAuthStateChanged(auth, user=>{
       if(user){
-        const user = auth.currentUser;
         dispatch({type:'getUser', payload:user});
         console.log('signed in', user);
         dispatch({type:'loading', payload:false});
@@ -61,11 +60,11 @@ function App() {
     
 
     <Route path='/simplebankweb'element={<Layout/> }>
-    <Route index element={user ? <HomePage/>: <Navigate to = {'/simplebankweb/user'}/>}/>
-    <Route path='transfer' element={user ? <Transfer/>: <Navigate to = {'/simplebankweb/user'}/>} />
-    <Route path='help' element={user ? <Help/> : <Navigate to = {'/simplebankweb/user'}/>}/>
-    <Route path='user' element={!user ? <Session/>: <Navigate to = {'/simplebankweb'}/> }/>
-    <Route path='signup' element ={!user ? <SignUp/>:<Navigate to = {'/simplebankweb'}/>} />
+    <Route index element={user ? <HomePage/>: <Navigate to = '/simplebankweb/user'/>}/>
+    <Route path='transfer' element={user ? <Transfer/>: <Navigate to = '/simplebankweb/user'/>} />
+    <Route path='help' element={user ? <Help/> : <Navigate to = '/simplebankweb/user'/>}/>
+    <Route path='user' element={!user ? <Session/>: <Navigate to = '/simplebankweb'/> }/>
+    <Route path='signup' element ={!user ? <SignUp/>:<Navigate to = '/simplebankweb'/>} />
     </Route>
     </>
   ))
