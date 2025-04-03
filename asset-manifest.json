@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/simplebankweb/static/css/main.690cefcc.css",
-    "main.js": "/simplebankweb/static/js/main.f8663e50.js",
+    "main.js": "/simplebankweb/static/js/main.c09c7fd8.js",
     "static/js/453.59b8a61b.chunk.js": "/simplebankweb/static/js/453.59b8a61b.chunk.js",
     "static/media/stocksimage.webp": "/simplebankweb/static/media/stocksimage.2866090c21293f913711.webp",
     "index.html": "/simplebankweb/index.html",
     "main.690cefcc.css.map": "/simplebankweb/static/css/main.690cefcc.css.map",
-    "main.f8663e50.js.map": "/simplebankweb/static/js/main.f8663e50.js.map",
+    "main.c09c7fd8.js.map": "/simplebankweb/static/js/main.c09c7fd8.js.map",
     "453.59b8a61b.chunk.js.map": "/simplebankweb/static/js/453.59b8a61b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.690cefcc.css",
-    "static/js/main.f8663e50.js"
+    "static/js/main.c09c7fd8.js"
   ]
 }
