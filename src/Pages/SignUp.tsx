@@ -55,11 +55,9 @@ export default function SignUp(){
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const {user} = userCredential
             await updateProfile(user, {displayName:name});
-            
-
             console.log('welcome new user');
             dispatch({type:'getUser', payload:user});
-            navigate('/simplebankweb')
+            navigate('/simplebankweb');
         }catch(error){
             console.error(error);
             setError(true)

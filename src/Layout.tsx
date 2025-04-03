@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { SideNav } from "./shared/SideNav";
+import { Header } from "./shared/Header";
 
 
 export default function Layout(){
@@ -13,7 +14,7 @@ export default function Layout(){
             </div>
             {/* Header */}
             <div className="second">
-             
+             <Header/>
             </div>
             {/* Outlet */}
             <div className="three">
